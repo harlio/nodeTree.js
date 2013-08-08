@@ -1,4 +1,6 @@
 boxtree.js
 ==========
 
-Multi-Level Checkbox Tree with Indeterminate prop and visual styles.
+A nested Checkbox Tree with Indeterminate prop and clean visual styles.
+
+![My image](checkboxtree.png)
