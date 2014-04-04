@@ -39,7 +39,7 @@
 
                     $(self.settings.node, self.settings.tree).click(function() {
 
-                        if (!$(this).is(self.settings.nodeDepth)) {
+                        if ($(this).siblings('.node-list').length) {
                             $(this).parent().toggleClass('active');
                             self.toggleIcon($(this));
                         }
@@ -62,9 +62,11 @@
                     }).on('click', '.expand-all-nodes', function() {
 
                         $(self.settings.node, self.settings.tree).each(function(){
-                            $(this).parent().addClass('active');
-                            $(self.settings.nodeDepth).parent().removeClass('active');
-                            self.toggleIcon($(this));
+
+                            if ($(this).siblings('.node-list').length) {
+                                $(this).parent().addClass('active');
+                                self.toggleIcon($(this));
+                            }
                         });
 
                     }).on('click', '.collapse-all-nodes', function() {
@@ -101,6 +103,7 @@
 
                     });
 
+                    // Called on init to hanlde pre checked nodes on page load
                     self.checkSiblings($(self.settings.nodeDepth + ' :checked').closest('li'), true);
 
 				},
