@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NodeTree.js - A simple family tree for nested checkbox lists</title>
+
+
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../dist/css/nodetree.css">
+	</head>
+	<body>
+        <div class="nt">
+
+        	<menu class="nt__menu">
+                <button type="button" class="btn btn-default nt__check-all"> Check All</button>
+                <button type="button" class="btn btn-default nt__uncheck-all"> Uncheck All</button>
+                <button type="button" class="btn btn-default nt__grow-all"> Expand All</button>
+                <button type="button" class="btn btn-default nt__chop-all"> Collapse All</button>
+        	</menu>
+            
+            <div class="nt__trunk">
+                <ul class="nt__branch">
+                    <li>
+                        <div class="nt__node">
+                            <label class="nt__node__input">
+                                <input type="checkbox">
+                            </label>
+                            <div class="nt__node__name">
+                                Parent Node A
+                            </div>
+                            <div class="nt__node__toggle">
+                                <i class="fa fa-plus-square-o fa-lg"></i>
+                            </div>
+                        </div>
+                        <ul class="nt__branch">
+                            <li>
+                                <div class="nt__node">
+                                    <label class="nt__node__input">
+                                        <input type="checkbox">
+                                    </label>
+                                    <div class="nt__node__name">
+                                        Child Node A
+                                    </div>
+                                    <div class="nt__node__toggle">
+                                        <i class="fa fa-plus-square-o fa-lg"></i>
+                                    </div>
+                                </div>
+                                <ul class="nt__branch">
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node A
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node B
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node C
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="nt__node">
+                                    <label class="nt__node__input">
+                                        <input type="checkbox">
+                                    </label>
+                                    <div class="nt__node__name">
+                                        Child Node B
+                                    </div>
+                                    <div class="nt__node__toggle">
+                                        <i class="fa fa-plus-square-o fa-lg"></i>
+                                    </div>
+                                </div>
+                                <ul class="nt__branch">
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node A
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="nt__node">
+                                    <label class="nt__node__input">
+                                        <input type="checkbox">
+                                    </label>
+                                    <div class="nt__node__name">
+                                        Child Node C
+                                    </div>
+                                    <div class="nt__node__toggle">
+                                        <i class="fa fa-plus-square-o fa-lg"></i>
+                                    </div>
+                                </div>
+                                <ul class="nt__branch">
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node A
+                                            </div>
+                                            <div class="nt__node__toggle">
+                                                <i class="fa fa-plus-square-o fa-lg"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="nt__branch">
+                                            <li>
+                                                <div class="nt__node">
+                                                    <label class="nt__node__input">
+                                                        <input type="checkbox">
+                                                    </label>
+                                                    <div class="nt__node__name">
+                                                        Greatgrandchild Node A
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="nt__node">
+                                                    <label class="nt__node__input">
+                                                        <input type="checkbox">
+                                                    </label>
+                                                    <div class="nt__node__name">
+                                                        Greatgrandchild Node B
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="nt__node">
+                                                    <label class="nt__node__input">
+                                                        <input type="checkbox">
+                                                    </label>
+                                                    <div class="nt__node__name">
+                                                        Greatgrandchild Node C
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nt__node">
+                            <label class="nt__node__input">
+                                <input type="checkbox">
+                            </label>
+                            <div class="nt__node__name">
+                                Parent Node B
+                            </div>
+                            <div class="nt__node__toggle">
+                                <i class="fa fa-plus-square-o fa-lg"></i>
+                            </div>
+                        </div>
+                        <ul class="nt__branch">
+                            <li>
+                                <div class="nt__node">
+                                    <label class="nt__node__input">
+                                        <input type="checkbox">
+                                    </label>
+                                    <div class="nt__node__name">
+                                        Child Node A
+                                    </div>
+                                    <div class="nt__node__toggle">
+                                        <i class="fa fa-plus-square-o fa-lg"></i>
+                                    </div>
+                                </div>
+                                <ul class="nt__branch">
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node A
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node B
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node C
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="nt__node">
+                                    <label class="nt__node__input">
+                                        <input type="checkbox">
+                                    </label>
+                                    <div class="nt__node__name">
+                                        Child Node B
+                                    </div>
+                                    <div class="nt__node__toggle">
+                                        <i class="fa fa-plus-square-o fa-lg"></i>
+                                    </div>
+                                </div>
+                                <ul class="nt__branch">
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node A
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="nt__node">
+                                    <label class="nt__node__input">
+                                        <input type="checkbox">
+                                    </label>
+                                    <div class="nt__node__name">
+                                        Child Node C
+                                    </div>
+                                    <div class="nt__node__toggle">
+                                        <i class="fa fa-plus-square-o fa-lg"></i>
+                                    </div>
+                                </div>
+                                <ul class="nt__branch">
+                                    <li>
+                                        <div class="nt__node">
+                                            <label class="nt__node__input">
+                                                <input type="checkbox">
+                                            </label>
+                                            <div class="nt__node__name">
+                                                Grandchild Node A
+                                            </div>
+                                            <div class="nt__node__toggle">
+                                                <i class="fa fa-plus-square-o fa-lg"></i>
+                                            </div>
+                                        </div>
+                                        <ul class="nt__branch">
+                                            <li>
+                                                <div class="nt__node">
+                                                    <label class="nt__node__input">
+                                                        <input type="checkbox">
+                                                    </label>
+                                                    <div class="nt__node__name">
+                                                        Greatgrandchild Node A
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="nt__node">
+                                                    <label class="nt__node__input">
+                                                        <input type="checkbox">
+                                                    </label>
+                                                    <div class="nt__node__name">
+                                                        Greatgrandchild Node B
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="nt__node">
+                                                    <label class="nt__node__input">
+                                                        <input type="checkbox">
+                                                    </label>
+                                                    <div class="nt__node__name">
+                                                        Greatgrandchild Node C
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/handlebars/handlebars.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
+        <!-- endbower -->
+		<script src="../dist/js/nodetree.js"></script>
+		<script>
+            $(function() {
+                $(".nt").nodetree();
+            });
+		</script>
+	</body>
+</html>

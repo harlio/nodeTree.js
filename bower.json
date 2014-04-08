@@ -1,0 +1,38 @@
+{
+	"name": "nodetree",
+	"title": "jQuery NodeTree",
+	"description": "A nested Checkbox Tree with Indeterminate prop and clean visual styles.",
+	"keywords": [
+		"jquery",
+		"boilerplate",
+		"plugins"
+	],
+	"version": "2.0.0",
+	"author": {
+		"name": "Harley Jessop",
+		"email": "harleyjessop@gmail.com",
+		"url": "https://github.com/northborn"
+	},
+	"maintainers": [
+		{
+			"name": "Harley Jessop",
+			"email": "harleyjessop@gmail.com",
+			"url": "https://github.com/northborn"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://zenorocha.mit-license.org/"
+		}
+	],
+	"bugs": "https://github.com/jquery-boilerplate/boilerplate/issues",
+	"homepage": "http://jqueryboilerplate.com",
+	"docs": "https://github.com/jquery-boilerplate/boilerplate#readme",
+	"download": "https://github.com/jquery-boilerplate/boilerplate/archive/master.zip",
+	"dependencies": {
+		"jquery": ">=1.9",
+        "handlebars": "1.3.0",
+        "underscore": "1.6.0"
+	}
+}
