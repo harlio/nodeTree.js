@@ -1,4 +1,4 @@
-checkboxtree.js
+nodeTree.js
 ==========
 
-A nested Checkbox Tree with Indeterminate prop and clean visual styles.
+A simple family tree for nested checkbox lists with support for Indeterminate check properties and a clean visual style.
