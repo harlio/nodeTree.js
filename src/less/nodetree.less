@@ -1,0 +1,110 @@
+@nt-css-prefix:       nt !default;
+@nt-version:          "2.0.0" !default;
+@nt-check-size:       40px !default;
+@nt-success:          #88BA0F !default;
+@nt-indeterminate:    #F0A533 !default;
+@nt-locked:           #34ADE2 !default;
+@nt-default-bg:       #EEEEEE !default;
+
+
+.@{nt-css-prefix} {
+    margin: 2rem;
+
+    &,
+    * {
+        box-sizing: border-box;
+        position: relative;
+    }
+}
+
+.@{nt-css-prefix}__node {
+    display: table; 
+    width: 100%;
+    cursor: pointer;
+    background-color: @nt-default-bg;
+    border-bottom: 2px solid white;
+    transition: all .4s ease;
+    overflow: hidden;
+
+    & + .@{nt-css-prefix}__branch {
+        visibility: hidden;
+        max-height: 0;
+    }
+
+    &.@{nt-css-prefix}__node--growing + .@{nt-css-prefix}__branch {
+        visibility: visible;
+        max-height: 999rem;
+        transition: all 2s ease;
+    }
+
+    &.@{nt-css-prefix}__node--checked {
+        background-color: fade(@nt-success, 50%);
+
+        &:hover {
+            background-color: fade(darken(@nt-success, 5%), 70%);
+        }
+    }
+
+    &.@{nt-css-prefix}__node--indeterminate {
+        background-color: fade(@nt-indeterminate, 50%);
+
+        &:hover {
+            background-color: fade(darken(@nt-indeterminate, 5%), 70%);
+        }
+    }
+
+    &:hover {
+        background-color: darken(@nt-default-bg, 7%);
+    }
+}
+
+.@{nt-css-prefix}__node__input,
+.@{nt-css-prefix}__node__name,
+.@{nt-css-prefix}__node__toggle {
+    display: table-cell;
+    padding: 1rem;
+    min-height: @nt-check-size;
+    vertical-align: middle;
+}
+
+.@{nt-css-prefix}__node__input,
+.@{nt-css-prefix}__node__toggle {
+    width: @nt-check-size;
+    text-align: center;
+}
+
+.@{nt-css-prefix}__node__input {
+    padding: 0;
+    border-right: 2px solid white;
+    box-shadow: inset 0 0 0 0 @nt-success;
+    background-color: transparent;
+    transition: all .4s ease;
+
+    input {
+        margin: -3px 0 0 0;
+    }
+
+    &:hover {
+        background-color: fade(@nt-success, 25%);
+        box-shadow: inset 0 0 3px 3px @nt-success;
+    }
+    &:active {
+        box-shadow: inset 0 0 0 3rem @nt-success;
+    }
+}
+
+.@{nt-css-prefix}__branch {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+    & & {
+        margin-left: @nt-check-size;
+    }
+}
+
+.@{nt-css-prefix}__menu {
+    padding: 0;
+    margin: 1rem 0;
+}
