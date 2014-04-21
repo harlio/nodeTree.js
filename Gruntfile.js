@@ -101,11 +101,11 @@ module.exports = function(grunt) {
         // Watch for changes to scss
 		watch: {
 			css: {
-				files: '**/*.scss',
+				files: ['**/*.scss'],
 				tasks: ['sass']
 			},
             scripts: {
-                files: ['**/*.js'],
+                files: ['src/js/**/*.js'],
                 tasks: ["jshint", "concat", "uglify"],
                 options: {
                     spawn: false,
@@ -121,7 +121,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-coffee");
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask("default", ["jshint", "concat", "uglify", "watch"]);

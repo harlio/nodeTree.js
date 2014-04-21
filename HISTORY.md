@@ -1,5 +1,8 @@
 # NodeTree.js History
 
+* v2.0.1 April 21, 2014
+	* Improved stability and speed for xxl tree's with alot of lists
+    * Added LESS port of stylesheet
 * v2.0.0 April 8, 2014
 	* Added unique BEM style namespace
     * Converted LESS to SCSS

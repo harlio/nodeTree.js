@@ -1,7 +1,15 @@
+/*
+ *  jQuery NodeTree - v2.0.0
+ *  A nested Checkbox Tree with Indeterminate prop and clean visual styles.
+ *  http://jqueryboilerplate.com
+ *
+ *  Made by Harley Jessop
+ *  Under MIT License
+ */
 ;(function ( $, window, document, undefined ) {
 
         // Create the defaults once
-        var pluginName = "nodetree",
+        var pluginName = "nodeTree",
             defaults = {
                 treeSelector:           ".nt", // Wrapper of the entire nested list.
                 nodeSelector:           ".nt__node", // Wrapper class given to each node in the tree
@@ -14,10 +22,9 @@
                 checkedClass:           "nt__node--checked",
                 indeterminateClass:     "nt__node--indeterminate",
                 iconSelector:           ".fa",
-                growIconClass:          "fa-plus-square-o",
-                chopIconClass:          "fa-minus-square-o",
-                nodeInputSelector:      ".nt__node__input", // Active area on each node to display or hide nested nodes.
-                nodeDepth:              ".greatgrandchild" // Default dept of tree lists        
+                growIconClass:          "fa-plus",
+                chopIconClass:          "fa-minus",
+                nodeInputSelector:      ".nt__node__input" // Active area on each node to display or hide nested nodes.
             };
 
         // The actual plugin constructor
@@ -42,32 +49,29 @@
                     container = this.element;
 
                 // Make checkbox label not mess with the toggle function
-                $(def.nodeInputSelector).on("click", function(e) {
-                    e.stopPropagation();
-                });
+                $(container).on("click", def.nodeInputSelector, function(e) {
 
-                $(container).on("click", def.nodeSelector, function() {
+                    e.stopPropagation();
+
+                }).on("click", def.nodeSelector, function() {
 
                     if ($(this).siblings(def.branchSelector).length) {
                         $(this).toggleClass(def.growingClass);
 
                         self.toggleIcon($(this));
                     }
-                });
 
-                $(container).on("click", def.checkAllSelector, function() {
+                }).on("click", def.checkAllSelector, function() {
 
                     $(container).find(":checkbox")
                         .prop({checked: "checked", indeterminate: false })
                         .trigger("change");
-                    self.colorCoded();
 
                 }).on("click", def.uncheckAllSelector, function() {
 
                     $(container).find(":checkbox")
                         .removeAttr("checked")
                         .trigger("change");
-                    self.colorCoded();
 
                 }).on("click", def.growAllSelector, function() {
 
@@ -86,17 +90,14 @@
                         self.toggleIcon($(this));
                     });
 
-                });
-
-
-                $(container).on("change", ":checkbox", function(e) {
+                }).on("change", ":checkbox", function(e) {
 
                     e.stopPropagation();
                     var checked = $(this).prop("checked"),
                         nodeContainer = $(this.parentNode.parentNode.parentNode),
                         descendantNodes;
 
-                    descendantNodes = $(nodeContainer).find(":checkbox").not($(def.checkedClass + " :checked"));
+                    descendantNodes = $(nodeContainer).find(":checkbox");
 
                     descendantNodes.prop({
                         indeterminate: false,
@@ -105,13 +106,16 @@
 
                     self.colorCoded(this);
                     self.colorCoded(descendantNodes);
-                    self.checkSiblings(nodeContainer, checked);
+
+                    if (!nodeContainer.parent().parent().hasClass("nt__trunk")){
+                        self.checkSiblings(nodeContainer, checked);
+                    }
 
                 });
 
                 // Called on init to hanlde pre checked nodes on page load
                 // nodeDepth should be passed in as an option to the deepest level expected in the list
-                self.checkSiblings($(def.nodeDepth + " :checked").closest("li"), true);
+                self.checkSiblings($(container).find(":checked").closest("li"), true);
 
             },
 
@@ -153,9 +157,6 @@
                     thisNode;
 
                 thisNode = parent.children(def.nodeSelector).find(":checkbox");
-
-                console.log(thisNode);
-
 
                 el.siblings().not(".empty").each(function() {
                     return all = ($(this).find(":checkbox").prop("checked") === checked);
