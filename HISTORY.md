@@ -1,5 +1,7 @@
 # NodeTree.js History
 
+* v2.0.2 April 22, 2014
+	* Improved init script for prechecked nodes
 * v2.0.1 April 21, 2014
 	* Improved stability and speed for xxl tree's with alot of lists
     * Added LESS port of stylesheet

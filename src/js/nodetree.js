@@ -1,7 +1,6 @@
 /*
- *  jQuery NodeTree - v2.0.0
+ *  jQuery NodeTree - v2.0.2
  *  A nested Checkbox Tree with Indeterminate prop and clean visual styles.
- *  http://jqueryboilerplate.com
  *
  *  Made by Harley Jessop
  *  Under MIT License
@@ -11,20 +10,21 @@
         // Create the defaults once
         var pluginName = "nodeTree",
             defaults = {
-                treeSelector:           ".nt", // Wrapper of the entire nested list.
-                nodeSelector:           ".nt__node", // Wrapper class given to each node in the tree
-                branchSelector:         ".nt__branch", // Wrapper class given to each node in the tree
-                checkAllSelector:       ".nt__check-all",
-                uncheckAllSelector:     ".nt__uncheck-all",
-                chopAllSelector:        ".nt__chop-all",
-                growAllSelector:        ".nt__grow-all",
-                growingClass:           "nt__node--growing",
-                checkedClass:           "nt__node--checked",
-                indeterminateClass:     "nt__node--indeterminate",
-                iconSelector:           ".fa",
-                growIconClass:          "fa-plus",
-                chopIconClass:          "fa-minus",
-                nodeInputSelector:      ".nt__node__input" // Active area on each node to display or hide nested nodes.
+                treeSel:           ".nt", // Wrapper of the entire nested list.
+                nodeSel:           ".nt__node", // Wrapper class given to each node in the tree
+                branchSel:         ".nt__branch", // Wrapper class given to each node in the tree
+                trunkCls:          "nt__trunk",
+                checkAllSel:       ".nt__check-all",
+                uncheckAllSel:     ".nt__uncheck-all",
+                chopAllSel:        ".nt__chop-all",
+                growAllSel:        ".nt__grow-all",
+                growingCls:        "nt__node--growing",
+                checkedCls:        "nt__node--checked",
+                indeterminateCls:  "nt__node--indeterminate",
+                iconSel:           ".fa",
+                growIconCls:       "fa-plus",
+                chopIconCls:       "fa-minus",
+                nodeInputSel:      ".nt__node__input" // Active area on each node to display or hide nested nodes.
             };
 
         // The actual plugin constructor
@@ -49,44 +49,44 @@
                     container = this.element;
 
                 // Make checkbox label not mess with the toggle function
-                $(container).on("click", def.nodeInputSelector, function(e) {
+                $(container).on("click", def.nodeInputSel, function(e) {
 
                     e.stopPropagation();
 
-                }).on("click", def.nodeSelector, function() {
+                }).on("click", def.nodeSel, function() {
 
-                    if ($(this).siblings(def.branchSelector).length) {
-                        $(this).toggleClass(def.growingClass);
+                    if ($(this).siblings(def.branchSel).length) {
+                        $(this).toggleClass(def.growingCls);
 
                         self.toggleIcon($(this));
                     }
 
-                }).on("click", def.checkAllSelector, function() {
+                }).on("click", def.checkAllSel, function() {
 
                     $(container).find(":checkbox")
                         .prop({checked: "checked", indeterminate: false })
                         .trigger("change");
 
-                }).on("click", def.uncheckAllSelector, function() {
+                }).on("click", def.uncheckAllSel, function() {
 
                     $(container).find(":checkbox")
                         .removeAttr("checked")
                         .trigger("change");
 
-                }).on("click", def.growAllSelector, function() {
+                }).on("click", def.growAllSel, function() {
 
-                    $(container).find(def.nodeSelector).each(function(){
+                    $(container).find(def.nodeSel).each(function(){
 
-                        if ($(this).siblings(def.branchSelector).length) {
-                            $(this).addClass(def.growingClass);
+                        if ($(this).siblings(def.branchSel).length) {
+                            $(this).addClass(def.growingCls);
                             self.toggleIcon($(this));
                         }
                     });
 
-                }).on("click", def.chopAllSelector, function() {
+                }).on("click", def.chopAllSel, function() {
 
-                    $(container).find(def.nodeSelector).each(function(){
-                        $(this).removeClass(def.growingClass);
+                    $(container).find(def.nodeSel).each(function(){
+                        $(this).removeClass(def.growingCls);
                         self.toggleIcon($(this));
                     });
 
@@ -104,29 +104,28 @@
                         checked: checked
                     });
 
-                    self.colorCoded(this);
-                    self.colorCoded(descendantNodes);
+                    self.paint(this);
+                    self.paint(descendantNodes);
 
-                    if (!nodeContainer.parent().parent().hasClass("nt__trunk")){
-                        self.checkSiblings(nodeContainer, checked);
+                    if (!nodeContainer.parent().parent().hasClass(def.trunkCls)){
+                        self.checkSib(nodeContainer, checked);
                     }
 
                 });
 
                 // Called on init to hanlde pre checked nodes on page load
-                // nodeDepth should be passed in as an option to the deepest level expected in the list
-                self.checkSiblings($(container).find(":checked").closest("li"), true);
+                $(container).find(":checked").change();
 
             },
 
-            colorCoded: function (n) {
+            paint: function (n) {
 
                 var def = this.settings;
 
                 $(n).each(function(){
-                    $(this).closest(def.nodeSelector)
-                        .toggleClass(def.checkedClass, $(n).is(":checked"))
-                        .toggleClass(def.indeterminateClass, $(n).prop("indeterminate") === true);
+                    $(this).closest(def.nodeSel)
+                        .toggleClass(def.checkedCls, $(n).is(":checked"))
+                        .toggleClass(def.indeterminateCls, $(n).prop("indeterminate") === true);
                 });
             },
 
@@ -135,16 +134,16 @@
                 var def = this.settings;
 
                 // Change the icon.
-                if (n.hasClass(def.growingClass)) {
+                if (n.hasClass(def.growingCls)) {
                     // The user wants to collapse the child list.
-                    n.find(def.iconSelector).removeClass(def.growIconClass).addClass(def.chopIconClass);
+                    n.find(def.iconSel).removeClass(def.growIconCls).addClass(def.chopIconCls);
                 } else {
                     // The user wants to expand the child list.
-                    n.find(def.iconSelector).removeClass(def.chopIconClass).addClass(def.growIconClass);
+                    n.find(def.iconSel).removeClass(def.chopIconCls).addClass(def.growIconCls);
                 }
             },
 
-            checkSiblings: function (el, checked) {
+            checkSib: function (el, checked) {
 
                 if (!el.length){
                     return;
@@ -156,7 +155,7 @@
                     all = true,
                     thisNode;
 
-                thisNode = parent.children(def.nodeSelector).find(":checkbox");
+                thisNode = parent.children(def.nodeSel).find(":checkbox");
 
                 el.siblings().not(".empty").each(function() {
                     return all = ($(this).find(":checkbox").prop("checked") === checked);
@@ -168,23 +167,23 @@
                         indeterminate: false,
                         checked: checked
                     });
-                    self.colorCoded(thisNode);
-                    self.checkSiblings(parent, checked);
+                    self.paint(thisNode);
+                    self.checkSib(parent, checked);
 
                 } else if (all && !checked) {
 
                     thisNode.prop("checked", checked);
                     thisNode.prop("indeterminate", (parent.find(":checked").length));
-                    self.colorCoded(thisNode);
-                    self.checkSiblings(parent, checked);
+                    self.paint(thisNode);
+                    self.checkSib(parent, checked);
 
                 } else {
 
-                    el.parents("li").children(def.nodeSelector).find(":checkbox").prop({
+                    el.parents("li").children(def.nodeSel).find(":checkbox").prop({
                         indeterminate: true,
                         checked: false
                     });
-                    self.colorCoded(el.parents("li").children(def.nodeSelector).find(":checkbox"));
+                    self.paint(el.parents("li").children(def.nodeSel).find(":checkbox"));
 
                 }
             }
