@@ -1,5 +1,5 @@
 /*
- *  jQuery NodeTree - v2.0.2
+ *  jQuery NodeTree - v2.0.3
  *  A nested Checkbox Tree with Indeterminate prop and clean visual styles.
  *
  *  Made by Harley Jessop
