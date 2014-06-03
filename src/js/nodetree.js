@@ -13,6 +13,8 @@
                 treeSel:           ".nt", // Wrapper of the entire nested list.
                 nodeSel:           ".nt__node", // Wrapper class given to each node in the tree
                 branchSel:         ".nt__branch", // Wrapper class given to each node in the tree
+                headerSel:         ".nt__branch__header",
+                emptySel:          ".nt__baren",
                 trunkCls:          "nt__trunk",
                 checkAllSel:       ".nt__check-all",
                 uncheckAllSel:     ".nt__uncheck-all",
@@ -157,7 +159,7 @@
 
                 thisNode = parent.children(def.nodeSel).find(":checkbox");
 
-                el.siblings().not(".empty").each(function() {
+                el.siblings().not(def.headerSel, def.emptySel).each(function() {
                     return all = ($(this).find(":checkbox").prop("checked") === checked);
                 });
 

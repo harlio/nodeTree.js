@@ -1,5 +1,8 @@
 # NodeTree.js History
 
+* v2.0.3 June 3, 2014
+	* Node and Branches can contain multiple columns of info
+    * Fixed issue with empty branches breaking the tree
 * v2.0.2 April 22, 2014
 	* Improved init script for prechecked nodes
 * v2.0.1 April 21, 2014

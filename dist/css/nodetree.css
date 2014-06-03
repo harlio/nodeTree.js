@@ -7,13 +7,9 @@
  *  Under MIT License
  */
 
-.nt {
-  margin: 2rem;
-}
 .nt,
 .nt * {
   box-sizing: border-box;
-  position: relative;
 }
 
 .nt__node {
@@ -26,13 +22,10 @@
   overflow: hidden;
 }
 .nt__node + .nt__branch {
-  visibility: hidden;
-  max-height: 0;
+  display: none;
 }
 .nt__node.nt__node--growing + .nt__branch {
-  visibility: visible;
-  max-height: 999rem;
-  transition: all 2s ease;
+  display: block;
 }
 .nt__node.nt__node--checked {
   background-color: rgba(136, 186, 15, 0.5);
@@ -51,23 +44,79 @@
 }
 
 .nt__node__input,
-.nt__node__name,
+.nt__node__info,
 .nt__node__toggle {
   display: table-cell;
-  padding: 1rem;
   min-height: 40px;
   vertical-align: middle;
+}
+
+.nt__node__info span,
+.nt__branch__header span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+  float: left;
+  padding: 1rem;
+  border-left: 2px solid white;
+}
+.nt__node__info span:first-child:nth-last-child(1),
+.nt__node__info span:first-child:nth-last-child(1) ~ span,
+.nt__branch__header span:first-child:nth-last-child(1),
+.nt__branch__header span:first-child:nth-last-child(1) ~ span {
+  width: 100%;
+}
+.nt__node__info span:first-child:nth-last-child(2),
+.nt__node__info span:first-child:nth-last-child(2) ~ span,
+.nt__branch__header span:first-child:nth-last-child(2),
+.nt__branch__header span:first-child:nth-last-child(2) ~ span {
+  width: 50%;
+}
+.nt__node__info span:first-child:nth-last-child(3),
+.nt__node__info span:first-child:nth-last-child(3) ~ span,
+.nt__branch__header span:first-child:nth-last-child(3),
+.nt__branch__header span:first-child:nth-last-child(3) ~ span {
+  width: 33.33333%;
+}
+.nt__node__info span:first-child:nth-last-child(4),
+.nt__node__info span:first-child:nth-last-child(4) ~ span,
+.nt__branch__header span:first-child:nth-last-child(4),
+.nt__branch__header span:first-child:nth-last-child(4) ~ span {
+  width: 25%;
+}
+.nt__node__info span:first-child:nth-last-child(5),
+.nt__node__info span:first-child:nth-last-child(5) ~ span,
+.nt__branch__header span:first-child:nth-last-child(5),
+.nt__branch__header span:first-child:nth-last-child(5) ~ span {
+  width: 20%;
+}
+.nt__node__info span:first-child:nth-last-child(6),
+.nt__node__info span:first-child:nth-last-child(6) ~ span,
+.nt__branch__header span:first-child:nth-last-child(6),
+.nt__branch__header span:first-child:nth-last-child(6) ~ span {
+  width: 16.66667%;
+}
+
+.nt__branch__header {
+  display: table;
+  width: 100%;
+  background-color: gainsboro;
+  border-bottom: 2px solid white;
+  overflow: hidden;
+  padding: 0 40px;
+  font-weight: bold;
 }
 
 .nt__node__input,
 .nt__node__toggle {
   width: 40px;
+  padding: 1rem;
   text-align: center;
 }
 
 .nt__node__input {
   padding: 0;
-  border-right: 2px solid white;
   box-shadow: inset 0 0 0 0 #88ba0f;
   background-color: transparent;
   transition: all .4s ease;

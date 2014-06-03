@@ -1,18 +1,25 @@
 @nt-css-prefix:       nt;
-@nt-version:          "2.0.2";
+@nt-version:          "2.0.3";
 @nt-check-size:       40px;
 @nt-success:          #88BA0F;
 @nt-indeterminate:    #F0A533;
 @nt-locked:           #34ADE2;
 @nt-default-bg:       #EEEEEE;
 
+.auto-width(@selector; @n;) when (@n > 0) {
+    
+    @{selector}:first-child:nth-last-child(@{n}),
+    @{selector}:first-child:nth-last-child(@{n}) ~ @{selector} { 
+          width: (100%/@n);
+    }
+    .auto-width(@selector; @n - 1);
+}
 
 .@{nt-css-prefix} {
 
     &,
     * {
         box-sizing: border-box;
-        position: relative;
     }
 }
 
@@ -55,17 +62,43 @@
 }
 
 .@{nt-css-prefix}__node__input,
-.@{nt-css-prefix}__node__name,
+.@{nt-css-prefix}__node__info,
 .@{nt-css-prefix}__node__toggle {
     display: table-cell;
-    padding: .5rem;
     min-height: @nt-check-size;
     vertical-align: middle;
+}
+
+.@{nt-css-prefix}__node__info,
+.@{nt-css-prefix}__branch__header {
+
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: middle;
+        float: left;
+        padding: 1rem;
+        border-left: 2px solid white;
+    }
+
+    .auto-width(span, 6);
+}
+
+.@{nt-css-prefix}__branch__header {
+    display: table; 
+    width: 100%;
+    background-color: darken(@nt-default-bg, 7%);
+    border-bottom: 2px solid white;
+    overflow: hidden;
+    padding: 0 @nt-check-size;
+    font-weight: bold;
 }
 
 .@{nt-css-prefix}__node__input,
 .@{nt-css-prefix}__node__toggle {
     width: @nt-check-size;
+    padding: 1rem;
     text-align: center;
 }
 
