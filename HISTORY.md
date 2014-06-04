@@ -1,5 +1,7 @@
 # NodeTree.js History
 
+* v2.0.4 June 4, 2014
+	* Auto firing on page load is now optional
 * v2.0.3 June 3, 2014
 	* Node and Branches can contain multiple columns of info
     * Fixed issue with empty branches breaking the tree

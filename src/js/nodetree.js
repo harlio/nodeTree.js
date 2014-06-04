@@ -1,5 +1,5 @@
 /*
- *  jQuery NodeTree - v2.0.3
+ *  jQuery NodeTree - v2.0.4
  *  A nested Checkbox Tree with Indeterminate prop and clean visual styles.
  *
  *  Made by Harley Jessop
@@ -26,7 +26,8 @@
                 iconSel:           ".fa",
                 growIconCls:       "fa-plus",
                 chopIconCls:       "fa-minus",
-                nodeInputSel:      ".nt__node__input" // Active area on each node to display or hide nested nodes.
+                nodeInputSel:      ".nt__node__input", // Active area on each node to display or hide nested nodes.
+                autoPaint:         true
             };
 
         // The actual plugin constructor
@@ -115,8 +116,10 @@
 
                 });
 
-                // Called on init to hanlde pre checked nodes on page load
-                $(container).find(":checked").change();
+                // Optionally called on init to hanlde pre checked nodes on page load
+                if (def.autoPaint) {
+                    $(container).find(def.nodeSel).find(":checked").change();
+                }
 
             },
 
