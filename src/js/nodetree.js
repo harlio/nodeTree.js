@@ -1,10 +1,3 @@
-/*
- *  jQuery NodeTree - v2.0.4
- *  A nested Checkbox Tree with Indeterminate prop and clean visual styles.
- *
- *  Made by Harley Jessop
- *  Under MIT License
- */
 ;(function ( $, window, document, undefined ) {
 
         // Create the defaults once

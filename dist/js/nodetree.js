@@ -1,14 +1,7 @@
 /*
- *  jQuery NodeTree - v2.0.3
- *  A nested Checkbox Tree with Indeterminate prop and clean visual styles.
- *  http://jqueryboilerplate.com
- *
- *  Made by Harley Jessop
- *  Under MIT License
- */
-/*
  *  jQuery NodeTree - v2.0.4
  *  A nested Checkbox Tree with Indeterminate prop and clean visual styles.
+ *  http://jqueryboilerplate.com
  *
  *  Made by Harley Jessop
  *  Under MIT License
