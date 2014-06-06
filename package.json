@@ -4,7 +4,7 @@
   "description": "A simple family tree for nested checkbox lists. Supports 'indeterminate' state checkbox nodes.",
   "author": "Harley Jessop",
   "homepage": "https://github.com/northborn/nodeTree.js/",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-cli": "~0.1.7",

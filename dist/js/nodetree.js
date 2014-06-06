@@ -108,8 +108,11 @@
                         checked: checked
                     });
 
-                    self.paint(this);
-                    self.paint(descendantNodes);
+                    self.paint(e.currentTarget);
+
+                    $(descendantNodes).each(function(){
+                        self.paint(this);
+                    });
 
                     if (!nodeContainer.parent().parent().hasClass(def.trunkCls)){
                         self.checkSib(nodeContainer, checked);
@@ -128,11 +131,9 @@
 
                 var def = this.settings;
 
-                $(n).each(function(){
-                    $(this).closest(def.nodeSel)
-                        .toggleClass(def.checkedCls, $(n).is(":checked"))
-                        .toggleClass(def.indeterminateCls, $(n).prop("indeterminate") === true);
-                });
+                $(n).closest(def.nodeSel)
+                    .toggleClass(def.checkedCls, $(n).is(":checked"))
+                    .toggleClass(def.indeterminateCls, $(n).prop("indeterminate") === true);
             },
 
             toggleIcon: function (n) {

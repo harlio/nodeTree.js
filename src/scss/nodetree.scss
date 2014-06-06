@@ -5,6 +5,8 @@ $nt-success:          #88BA0F !default;
 $nt-indeterminate:    #F0A533 !default;
 $nt-locked:           #34ADE2 !default;
 $nt-default-bg:       #EEEEEE !default;
+$nt-header-bg:        #222222 !default;
+
 
 @mixin auto-width($selector, $n) {
     @for $i from 1 through $n {
@@ -74,12 +76,17 @@ $nt-default-bg:       #EEEEEE !default;
 
     span {
         overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
         display: inline-block;
         vertical-align: middle;
         float: left;
         padding: 1rem;
         border-left: 2px solid white;
+
+        &:hover {
+            white-space: normal;
+        }
     }
 
     @include auto-width('span', 6);
@@ -93,6 +100,8 @@ $nt-default-bg:       #EEEEEE !default;
     overflow: hidden;
     padding: 0 $nt-check-size;
     font-weight: bold;
+    font-size: 12px;
+    color: $nt-default-bg;
 }
 
 .#{$nt-css-prefix}__node__input,
@@ -137,4 +146,6 @@ $nt-default-bg:       #EEEEEE !default;
     margin: 1rem 0;
 }
 
-
+.#{$nt-css-prefix}__baren {
+    cursor: default;
+}

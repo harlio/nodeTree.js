@@ -5,6 +5,7 @@
 @nt-indeterminate:    #F0A533;
 @nt-locked:           #34ADE2;
 @nt-default-bg:       #EEEEEE;
+@nt-header-bg:        #222222;
 
 .auto-width(@selector; @n;) when (@n > 0) {
     
@@ -74,12 +75,17 @@
 
     span {
         overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
         display: inline-block;
         vertical-align: middle;
         float: left;
         padding: 1rem;
         border-left: 2px solid white;
+
+        &:hover {
+            white-space: normal;
+        }
     }
 
     .auto-width(span, 6);
@@ -88,11 +94,14 @@
 .@{nt-css-prefix}__branch__header {
     display: table; 
     width: 100%;
-    background-color: darken(@nt-default-bg, 7%);
+    background-color: @nt-header-bg;
     border-bottom: 2px solid white;
     overflow: hidden;
     padding: 0 @nt-check-size;
     font-weight: bold;
+    font-size: 12px;
+    color: @nt-default-bg;
+
 }
 
 .@{nt-css-prefix}__node__input,
@@ -136,4 +145,8 @@
 .@{nt-css-prefix}__menu {
     padding: 0;
     margin: 1rem 0;
+}
+
+.@{nt-css-prefix}__baren {
+    cursor: default
 }

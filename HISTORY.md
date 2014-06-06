@@ -1,5 +1,8 @@
 # NodeTree.js History
 
+* v2.0.5 June 4, 2014
+	* Moving each loop for coloring decendants outside of function to prevent timeout on large decendant sets
+    * Other minor improvements
 * v2.0.4 June 4, 2014
 	* Auto firing on page load is now optional
 * v2.0.3 June 3, 2014
